@@ -5,3 +5,4 @@ dist
 .DS_STORE
 .env
 yarn-error.log
+private
