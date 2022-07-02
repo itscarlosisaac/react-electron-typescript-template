@@ -39,6 +39,7 @@
     "electron-window-state": "^5.0.3"
   },
   "build": {
+    "appId": "com.mycustomdomain.myappname",
     "productName": "react-electron-typescript-template",
     "files": [
       "build/*",
@@ -47,6 +48,20 @@
     "mac": {
       "category": "public.app-category.utilities",
       "target": "pkg"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "deleteAppDataOnUninstall": false
     },
     "publish": {
       "provider": "github"
