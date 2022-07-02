@@ -14,7 +14,7 @@
     "build:electron": "tsc -p electron",
     "prep": "run-script-os",
     "prep:default": "yarn build:frontend && yarn build:electron && rm -rf build/ && rm -rf dist/ && cp -r ./frontend/build build  && tsc -p electron",
-    "prep:windows": "yarn build:frontend && yarn build:electron && rimraf -rf build/ && rimraf -rf dist/ && xcopy -r \"./frontend/build\" \"build\"  && tsc -p electron",
+    "prep:windows": "yarn build:frontend && yarn build:electron && rimraf -rf build/ && rimraf -rf dist/ && xcopy /i /s /q /e /y  \"./frontend/build\" \"build\"  && tsc -p electron",
     "build": "yarn prep && electron-builder --dir",
     "release": "yarn prebuild && electron-builder -m --publish always"
   },
