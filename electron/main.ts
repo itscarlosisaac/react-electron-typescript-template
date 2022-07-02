@@ -1,14 +1,26 @@
 import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
 import * as isDev from 'electron-is-dev';
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
+import updater from './updater';
+import windowStateKeeper from 'electron-window-state'
 
 let win: BrowserWindow | null = null;
 
 function createWindow() {
+  let mainWindowState = windowStateKeeper({
+    defaultHeight: 800,
+    defaultWidth: 600
+  })
+  // Check for app updates;
+  setTimeout(updater, 3000)
+
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
+    minHeight: 400,
+    minWidth: 600,
     webPreferences: {
       nodeIntegration: true
     }
@@ -22,6 +34,7 @@ function createWindow() {
     win.loadURL(`file://${__dirname}/index.html`);
   }
 
+  mainWindowState.manage(win);
 
   win.on('closed', () : void => win = null);
 
