@@ -1,0 +1,48 @@
+{
+  "name": "react-electron-typescript-template",
+  "description": "A Ready for production electron template with React and Typescript",
+  "version": "0.0.1",
+  "main": "./build/main.js",
+  "scripts": {
+    "setup": "cd ./frontend && yarn",
+    "dev:frontend": "cd ./frontend && yarn start",
+    "dev:electron": "tsc -p electron -w",
+    "dev": "IS_DEV=true concurrently \"cross-env BROWSER=none yarn dev:frontend\" \"wait-on http://localhost:3000 && yarn dev:electron\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
+    "build:frontend": "cd ./frontend && yarn build",
+    "build:electron": "tsc -p electron",
+    "prebuild": "yarn build:frontend && yarn build:electron && rm -rf build/ && rm -rf dist/ && cp -r ./frontend/build build  && tsc -p electron",
+    "build": "electron-builder --dir"
+  },
+  "author": "Carlos Martinez <itscarlosisaac@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/electron-devtools-installer": "^2.2.2",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^19.0.7",
+    "electron-builder": "^23.1.0",
+    "electron-publish": "^23.0.9",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4",
+    "wait-on": "^6.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.4.8",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electron-updater": "^5.0.5"
+  },
+  "build": {
+    "productName": "react-electron-typescript-template",
+    "files": [
+      "build/*",
+      "build/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "pkg"
+    }
+  }
+}

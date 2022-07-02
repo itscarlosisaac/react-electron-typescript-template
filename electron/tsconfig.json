@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "module": "commonjs",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "outDir": "../build",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "paths": {
+            "*": ["node_modules/*"]
+        }
+    },
+    // Commented out to allow cusomization of the folder structure.
+    // "include": []
+}
