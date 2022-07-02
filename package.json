@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "./build/main.js",
   "repository": "https://github.com/itscarlosisaac/react-electron-typescript-template",
+  "homepage": "https://github.com/itscarlosisaac/react-electron-typescript-template",
   "scripts": {
     "setup": "cd ./frontend && yarn",
     "dev:frontend": "cd ./frontend && yarn start",
@@ -13,7 +14,7 @@
     "build:electron": "tsc -p electron",
     "prebuild": "yarn build:frontend && yarn build:electron && rm -rf build/ && rm -rf dist/ && cp -r ./frontend/build build  && tsc -p electron",
     "build": "electron-builder --dir",
-    "release": "yarn prebuild && electron-builder -mw --publish 'onTagOrDraft'"
+    "release": "yarn prebuild && electron-builder -m --publish always"
   },
   "author": "Carlos Martinez <itscarlosisaac@gmail.com>",
   "license": "MIT",
@@ -34,7 +35,8 @@
     "electron-is-dev": "^2.0.0",
     "electron-log": "^4.4.8",
     "electron-reload": "^2.0.0-alpha.1",
-    "electron-updater": "^5.0.5"
+    "electron-updater": "^5.0.5",
+    "electron-window-state": "^5.0.3"
   },
   "build": {
     "productName": "react-electron-typescript-template",
