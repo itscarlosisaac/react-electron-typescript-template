@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './renderer';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => electron.ipcRenderer.sendMessage("message", {message: "DATA"})}>
+          Sending message to renderer
+        </button>
       </header>
     </div>
   );

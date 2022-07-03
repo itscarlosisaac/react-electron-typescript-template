@@ -1,8 +1,9 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as isDev from 'electron-is-dev';
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
 import updater from './updater';
 import windowStateKeeper from 'electron-window-state'
+import * as path from "path";
 
 let win: BrowserWindow | null = null;
 
@@ -22,7 +23,8 @@ function createWindow() {
     minHeight: 400,
     minWidth: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 
@@ -72,3 +74,10 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+
+
+ipcMain.on("message", (event: any, args: any) => {
+  console.log("EVEnt:",event);
+  console.log("Args:",args);
+})
