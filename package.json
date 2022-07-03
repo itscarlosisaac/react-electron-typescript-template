@@ -16,7 +16,7 @@
     "prep:default": "yarn build:frontend && yarn build:electron && rm -rf build/ && rm -rf dist/ && cp -r ./frontend/build build  && tsc -p electron",
     "prep:windows": "yarn build:frontend && yarn build:electron && rimraf -rf build/ && rimraf -rf dist/ && xcopy /i /s /q /e /y  \"./frontend/build\" \"build\"  && tsc -p electron",
     "build": "yarn prep && electron-builder --dir",
-    "release": "yarn prebuild && electron-builder -m --publish always"
+    "release": "yarn prep && electron-builder -m --p onTagOrDraft"
   },
   "author": "Carlos Martinez <itscarlosisaac@gmail.com>",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "@types/electron-devtools-installer": "^2.2.2",
     "concurrently": "^7.2.2",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^5.1.0",
     "electron": "^19.0.7",
     "electron-builder": "^23.1.0",
     "electron-publish": "^23.0.9",
@@ -50,21 +51,26 @@
     ],
     "mac": {
       "category": "public.app-category.utilities",
-      "target": "pkg"
+      "type": "distribution"
     },
     "win": {
       "target": [
         {
           "target": "nsis",
           "arch": [
-            "x64"
+            "x64",
+            "ia32"
           ]
         }
       ]
     },
     "nsis": {
       "oneClick": false,
-      "deleteAppDataOnUninstall": false
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": true,
+      "menuCategory": true,
+      "createDesktopShortcut": true
     },
     "publish": {
       "provider": "github"
