@@ -1,7 +1,7 @@
 {
   "name": "react-electron-typescript-template",
   "description": "A Ready for production electron template with React and Typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./build/main.js",
   "repository": "https://github.com/itscarlosisaac/react-electron-typescript-template",
   "homepage": "https://github.com/itscarlosisaac/react-electron-typescript-template",
