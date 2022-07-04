@@ -1,10 +1,10 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import * as isDev from 'electron-is-dev';
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
 import updater from './updater';
 import windowStateKeeper from 'electron-window-state'
 import * as path from "path";
 
+const isDev = !app.isPackaged;
 let win: BrowserWindow | null = null;
 
 function createWindow() {
