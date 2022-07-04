@@ -51,12 +51,12 @@ function createWindow() {
 
   // Hot Reloading
   if (isDev) {
-    // 'node_modules/.bin/electronPath'
-    // require('electron-reload')(__dirname, {
-    //   electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
-    //   forceHardReset: true,
-    //   hardResetMethod: 'exit'
-    // });
+    'node_modules/.bin/electronPath'
+    require('electron-reload')(__dirname, {
+      electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
+      forceHardReset: true,
+      hardResetMethod: 'exit'
+    });
   }
 
 }
