@@ -24,6 +24,6 @@ To package apps for the local platform:
 yarn release
 ```
 
-###_Note_ 
+### _Note_ 
 By default is using Github releases to publish the app. You need to provide a GH_TOKEN variable to be able to pack and publish the app on Github.
 
