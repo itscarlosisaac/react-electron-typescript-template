@@ -1,5 +1,7 @@
+import * as Electron from "electron";
+
 declare global {
-    const electron: any
+    const electron: Electron;
 }
 
 export {};
